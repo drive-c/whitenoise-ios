@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     lazy var player: AVAudioPlayer? = self.makePlayer()                         // Creates player
     var presenter: MainPresenter?
     var timer: Timer?
-    
+   
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var timerPicker: UIDatePicker!
     @IBOutlet weak var timerButton: UIButton!
@@ -22,6 +22,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var wavesSwitch: UISwitch!
     @IBOutlet weak var fadeSwitch: UISwitch!
     @IBOutlet weak var colorSegmented: UISegmentedControl!
+    @IBOutlet weak var mpVolumeViewParentView: UIView!
+    
     
     // Sets colors for sound type "colors".
     
@@ -42,6 +44,11 @@ class ViewController: UIViewController {
         timerPicker.setValue(UIColor.white, forKey: "textColor")
         presenter = MainPresenter(viewController: self)
         presenter?.loadSaved()
+    
+        mpVolumeViewParentView.backgroundColor = UIColor.clear
+        let mpVolumeView = MPVolumeView(frame: mpVolumeViewParentView.bounds)
+        mpVolumeViewParentView.addSubview(mpVolumeView)
+        
     }
     
     @objc func update() {
@@ -141,10 +148,8 @@ class ViewController: UIViewController {
         switch color {
         case .White:
             colorSegmented.selectedSegmentIndex = 0
-            colorSegmented.tintColor = white
-            // Selecting item number
-            wavesSwitch.onTintColor = grey
-            // Change wavesSwitch color
+            colorSegmented.tintColor = white                                    // Selecting item number
+            wavesSwitch.onTintColor = grey                                      // Change wavesSwitch color
             fadeSwitch.onTintColor = grey                                       // Changes fadeSwitch color
             break;
         case .Pink:
@@ -206,7 +211,6 @@ class ViewController: UIViewController {
     @IBAction func timerAddedAction(_ sender: UIButton) {
         presenter?.addDeleteTimer()
     }
-    
     
 }
 
