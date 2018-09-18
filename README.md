@@ -1,3 +1,11 @@
+Forked from https://github.com/davidalbers/whitenoise-ios
+
+---
+
+I am Working on modifying some of the features to better suit my personal needs.
+
+---
+
 This is an iOS app that plays white, pink, and brown noise.
 
 Most white noise apps lack features that I would like to have, so I made my own. Those features are:
