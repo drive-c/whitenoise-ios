@@ -174,7 +174,7 @@ class MainPresenter {
         }
     }
     
-    public func resetVolume() {
+    public func resetVolume() {                                             // Sets volume
         maxVolume = 1.0
         volume = 0.2
         viewController.setVolume(volume: volume)
@@ -182,7 +182,7 @@ class MainPresenter {
         increasing = false
     }
     
-    public func applyWavyVolume() {
+    public func applyWavyVolume() {                                         // Sets volume in waves
         if (increasing) {
             volume += volumeIncrement
         } else {
@@ -197,7 +197,7 @@ class MainPresenter {
         }
     }
     
-    public func applyFadeVolume() {
+    public func applyFadeVolume() {                                         // Fades volume
         let volumeDelta = (1.0 - minVolume) /
             (Float(fadeTime) * 1.0 / Float(MainPresenter.tickInterval))
         if (maxVolume > minVolume) {
